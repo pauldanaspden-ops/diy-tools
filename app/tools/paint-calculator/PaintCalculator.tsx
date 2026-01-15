@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { PaintProjectSchema, paintDefaults } from "@/lib/tools/paint/schema";
+import { PaintProjectSchema, paintDefaults, type PaintFormState } from "@/lib/tools/paint/schema";
 import { calcPaint } from "@/lib/tools/paint/engine";
 
 type FormState = typeof paintDefaults;

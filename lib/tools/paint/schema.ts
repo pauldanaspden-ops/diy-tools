@@ -1,16 +1,29 @@
 import { z } from "zod";
 
-export const paintDefaults = {
+export type PaintFormState = {
+  lengthM: number;
+  widthM: number;
+  heightM: number;
+  doorsCount: number;
+  windowsCount: number;
+  coats: 1 | 2 | 3;
+  coverageM2PerL: number;
+  wastePct: number;
+  includeCeiling: boolean;
+  pricePerL?: number;
+};
+
+export const paintDefaults: PaintFormState = {
   lengthM: 4,
   widthM: 3,
   heightM: 2.4,
   doorsCount: 1,
   windowsCount: 1,
-  coats: 2 as const,
+  coats: 2,
   coverageM2PerL: 12,
   wastePct: 10,
   includeCeiling: false,
-  pricePerL: undefined as number | undefined,
+  pricePerL: undefined,
 };
 
 export const PaintProjectSchema = z.object({
