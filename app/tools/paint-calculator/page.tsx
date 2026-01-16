@@ -8,11 +8,19 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <main style={{ maxWidth: 900, margin: "0 auto", padding: 24 }}>
-      <h1>Paint Calculator</h1>
-      <p>Calculate how much paint you need for a room.</p>
+    <main className="container">
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+        <div>
+          <h1>Paint Calculator</h1>
+          <p>Calculate how much paint you need for a room.</p>
+        </div>
+        <a className="badge" href="/">← Back to tools</a>
+      </div>
 
       <PaintCalculator />
+      <p style={{ marginTop: 16, fontSize: 12 }}>
+        Disclaimer: This tool provides estimates only. Always check product coverage on the tin.
+      </p>
     </main>
   );
 }
