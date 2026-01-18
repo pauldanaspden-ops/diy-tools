@@ -1,8 +1,17 @@
 import { z } from "zod";
 
 export type PaintFormState = {
+  mode: "simple" | "walls";
+
+  // Simple mode dims
   lengthM: number;
   widthM: number;
+
+  // Wall-by-wall mode
+  walls: { lengthM: number }[];
+  excludedAreas: { label?: string; areaM2: number }[];
+
+  // Shared
   heightM: number;
   doorsCount: number;
   windowsCount: number;
@@ -14,8 +23,14 @@ export type PaintFormState = {
 };
 
 export const paintDefaults: PaintFormState = {
+  mode: "simple",
+
   lengthM: 4,
   widthM: 3,
+
+  walls: [{ lengthM: 4 }],
+  excludedAreas: [],
+
   heightM: 2.4,
   doorsCount: 1,
   windowsCount: 1,
@@ -27,8 +42,28 @@ export const paintDefaults: PaintFormState = {
 };
 
 export const PaintProjectSchema = z.object({
-  lengthM: z.number().min(1).max(50),
-  widthM: z.number().min(1).max(50),
+  mode: z.union([z.literal("simple"), z.literal("walls")]),
+
+  lengthM: z.number().min(0).max(50),
+  widthM: z.number().min(0).max(50),
+
+  walls: z
+    .array(
+      z.object({
+        lengthM: z.number().min(0).max(200),
+      })
+    )
+    .default([]),
+
+  excludedAreas: z
+    .array(
+      z.object({
+        label: z.string().optional(),
+        areaM2: z.number().min(0).max(500),
+      })
+    )
+    .default([]),
+
   heightM: z.number().min(1.8).max(10),
   doorsCount: z.number().int().min(0).max(20),
   windowsCount: z.number().int().min(0).max(40),
