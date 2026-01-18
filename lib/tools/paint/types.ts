@@ -3,8 +3,17 @@ export type UnitSystem = 'metric' | 'imperial';
 export type { SavedCalculation } from './storage';
 
 export type PaintProjectInput = {
-  lengthM: number;
-  widthM: number;
+  mode: "simple" | "walls";
+
+  // SIMPLE MODE
+  lengthM?: number;
+  widthM?: number;
+
+  // ADVANCED MODE
+  walls?: WallInput[];
+  excludedAreas?: ExcludedAreaInput[];
+
+  // SHARED
   heightM: number;
   doorsCount: number;
   windowsCount: number;
@@ -14,6 +23,7 @@ export type PaintProjectInput = {
   includeCeiling: boolean;
   pricePerL?: number;
 };
+
 
 export type PaintProjectResult = {
   wallAreaM2: number;
@@ -26,3 +36,15 @@ export type PaintProjectResult = {
   recommendedCans: { sizeL: number; qty: number }[];
   estimatedCost?: number;
 };
+
+export type WallInput = {
+  lengthM: number;
+};
+
+export type ExcludedAreaInput = {
+  label?: string;
+  areaM2: number;
+};
+
+export type MeasurementMode = "simple" | "walls";
+
