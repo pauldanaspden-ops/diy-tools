@@ -1,3 +1,7 @@
+export type UnitSystem = 'metric' | 'imperial';
+
+export type { SavedCalculation } from './storage';
+
 export type PaintProjectInput = {
   lengthM: number;
   widthM: number;
