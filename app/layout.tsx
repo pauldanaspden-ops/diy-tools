@@ -18,6 +18,9 @@ export const metadata = {
     template: "%s | DIY Tools",
   },
   description: "Simple calculators and planners for common home DIY tasks.",
+  verification: {
+    google: "v1d_f_iylBeiFPlZ87LpzQBrpiLVnKJVOWi53TlgVHo",
+  },
 };
 
 
