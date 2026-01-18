@@ -1,9 +1,15 @@
 import PaintCalculator from "./PaintCalculator";
 
 export const metadata = {
-  title: "Paint Calculator – How Much Paint Do I Need?",
+  title: "Paint Calculator – How Much Paint Do I Need? | Free Tool",
   description:
-    "Free paint calculator to work out how many litres of paint you need for a room, including waste.",
+    "Free paint calculator with metric/imperial units. Calculate how many litres or gallons of paint you need for any room. Save calculations and get accurate estimates including waste.",
+  keywords: "paint calculator, how much paint do I need, paint estimator, room paint calculator, paint coverage calculator, litres of paint, gallons of paint",
+  openGraph: {
+    title: "Paint Calculator – How Much Paint Do I Need?",
+    description: "Free paint calculator to work out exactly how much paint you need for a room",
+    type: "website",
+  },
 };
 
 export default function Page() {
